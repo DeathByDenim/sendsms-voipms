@@ -184,6 +184,10 @@ def send_message(target_phone, text_message):
         print(d[0].decode('utf-8'))
         print()
 
+    if d[1][0] != SERVER_IP or d[1][1] != PORT:
+        print("ERROR: Message received from different server than contacted")
+        sys.exit(1)
+
     answer = d[0].decode('utf-8').split("\r\n")
     response_code = None
     if answer[0].startswith("SIP/2.0"):
